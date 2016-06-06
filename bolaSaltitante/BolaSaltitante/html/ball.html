@@ -1,0 +1,32 @@
+
+<html>
+    <head>
+        <script >
+            //var img = new Image();
+            //img.src = "../img/caro.png";
+            //var ctx;
+            //
+            //function init(){
+            //    ctx = document.getElementById("canvas").getContext('2d');
+            //    ctx.drawImage(img, 100, 20, 100, 200);
+            //	
+            //}
+
+            setInterval(mudaValor, 1);
+    
+            function mudaValor(){
+                document.f.secs.value = String(1 + Number(document.f.secs.value));
+            }
+    
+        </script>
+    </head>
+    <body onload="init();"> 
+        <!--    <canvas id="canvas" width="400" height="300" style="border: solid;">não suportado pelo navegador
+                
+        </canvas>-->
+        <form name="f">
+            <input type="text" name="secs" value="0"/>    
+        </form>
+
+    </body>
+</html>

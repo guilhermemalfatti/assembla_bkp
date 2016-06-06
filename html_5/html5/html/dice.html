@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Primeira jogada</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript">
+            var cwidth = 400, cheigth = 300, dicex = 50, dicey = 50, dicewidth = 100, dicehiegth = 100, dotrad = 6, ctx;
+            
+            function init(){
+                var ch =1 + Math.floor(Math.random()*6);
+                drawface(ch);
+               
+            }
+            function drawface(n){
+                
+                ctx = document.getElementById('canvas').getContext('2d');
+                
+                ctx.lineWidth = 5;
+                ctx.clearRect(dicex, dicey, dicewidth, dicehiegth); //limpa os dados
+                ctx.strokeRect(dicex, dicey, dicewidth, dicehiegth);
+                ctx.fillStyle = "#FF0000";
+                
+                switch(n){
+                    case 1:
+                        draw1();
+                        break;
+                    case 2:
+                        draw2();
+                        break;
+                    case 3:
+                        draw2();
+                        draw1();
+                        break;
+                    case 4:
+                        draw4();
+                        break;
+                    case 5:
+                        draw4();
+                        draw1();
+                        break;
+                    case 6:
+                        draw4();
+                        draw2mid();
+                        break;
+                }
+                
+                function draw1(){
+                    var dotx, doty;
+                    ctx.beginPath();
+                    
+                    dotx = dicex*2;
+                    doty = dicey*2;
+                    
+
+                    ctx.arc(dotx, doty, dotrad, 0, Math.PI*2, true);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+                
+                function draw2(){
+                    var dotx, doty;
+                    
+                    ctx.beginPath();
+                    
+                    dotx = dicex + 3*dotrad;
+                    doty = dicey + 3*dotrad;
+                    
+                    ctx.arc(dotx, doty, dotrad, 0, Math.PI*2, true);
+        
+                    dotx = dicex + dicewidth -3*dotrad;
+                    doty = dicey + dicehiegth -3*dotrad;
+        
+                    ctx.arc(dotx, doty, dotrad, 0, Math.PI*2, true);
+                    ctx.closePath();
+        
+                    ctx.fill();
+                }
+                function  draw4(){
+                    var dotx, doty;
+                    
+                    ctx.beginPath();
+                    dotx = dicex + 3*dotrad;
+                    doty = dicey + 3*dotrad;
+                    ctx.arc(dotx, doty, dotrad, 0, Math.PI*2, true);                    
+                    dotx = dicex + dicewidth-3*dotrad;
+                    doty = dicey + dicehiegth-3*dotrad;
+                    ctx.arc(dotx, doty, dotrad, 0, Math.PI*2, true);                    
+                    ctx.closePath();
+                    ctx.fill();    
+            
+                    ctx.beginPath();        
+                    dotx = dicex + 3*dotrad;
+                    doty = dicey + dicehiegth-3*dotrad;
+                    ctx.arc(dotx, doty, dotrad, 0, Math.PI*2, true);                    
+                    dotx = dicex + dicewidth-3*dotrad;
+                    doty = dicey + 3*dotrad;
+                    ctx.arc(dotx, doty, dotrad, 0, Math.PI*2, true);                    
+                    ctx.closePath();
+                    ctx.fill();
+                }
+                function draw2mid(){
+                    var dotx, doty;
+                    
+                    dotx = dicex + 3*dotrad;
+                    doty = dicey + .5*dicehiegth;
+                    ctx.arc(dotx, doty, dotrad, 0, Math.PI*2, true);   
+                    
+                    dotx = dicex + dicewidth-3*dotrad;
+                    doty = dicey + .5*dicehiegth;
+                    ctx.arc(dotx, doty, dotrad, 0, Math.PI*2, true);                    
+                    ctx.closePath();
+                    ctx.fill();
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <canvas id="canvas" width="400" height="300">
+            Your browser not suport html5.
+        </canvas>
+        <button onclick="init();">Play</button>
+    </body>
+</html>
